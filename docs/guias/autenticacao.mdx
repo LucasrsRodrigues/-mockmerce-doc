@@ -1,0 +1,99 @@
+---
+id: autenticacao
+title: Autenticação
+sidebar_label: Autenticação
+description: Como assinar as chamadas, logar o cliente final e resolver os erros 401/403 mais comuns.
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Autenticação
+
+Recapitulando as [3 camadas](../comece-aqui/conceitos): toda chamada de negócio leva a
+`X-API-Key` (e, idealmente, o `X-Student-RM`). Ações do **cliente logado** também levam o
+token JWT dele.
+
+## Headers padrão do app
+
+```js title="cliente.js"
+const BASE = 'http://localhost:3333/v1';
+
+// Base: identifica o grupo + o aluno
+const headers = {
+  'X-API-Key': process.env.API_KEY,     // sk_live_...
+  'X-Student-RM': 'RM550001',
+  'Content-Type': 'application/json',
+};
+```
+
+## Login do cliente final
+
+O comprador se cadastra/loga e recebe um **token**. A partir daí, as ações dele levam
+`Authorization: Bearer <token>`.
+
+<Tabs groupId="lang">
+  <TabItem value="curl" label="curl" default>
+
+```bash
+# Cadastro (ou troque por /auth/login se já existe)
+curl -X POST "$BASE/auth/register" \
+  -H "X-API-Key: $API_KEY" -H "X-Student-RM: RM550001" \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Maria","email":"maria@x.com","password":"123456"}'
+```
+
+  </TabItem>
+  <TabItem value="js" label="JavaScript">
+
+```js
+const { token } = await fetch(`${BASE}/auth/register`, {
+  method: 'POST',
+  headers,
+  body: JSON.stringify({ name: 'Maria', email: 'maria@x.com', password: '123456' }),
+}).then((r) => r.json());
+
+// Guarde o token e use nas ações do cliente:
+const auth = { ...headers, Authorization: `Bearer ${token}` };
+```
+
+  </TabItem>
+  <TabItem value="resp" label="Resposta">
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiInR5cCI6IkpXVCJ9...",
+  "customer": { "id": "cmse...", "name": "Maria", "email": "maria@x.com" }
+}
+```
+
+  </TabItem>
+</Tabs>
+
+:::tip Quando usar o `Bearer`
+Só nas ações **do comprador**: carrinho, checkout, pedidos dele, endereços e favoritos.
+Listar o catálogo **não** precisa de token de cliente — só da `X-API-Key`.
+:::
+
+## Erros de autenticação
+
+| Status | `code` | Provável causa | Como resolver |
+|---|---|---|---|
+| `401` | `UNAUTHORIZED` | Sem `X-API-Key`, chave inválida ou **revogada** | Gere/ative a chave no painel |
+| `401` | `UNAUTHORIZED` | Token do cliente ausente/expirado | Refazer `POST /auth/login` |
+| `403` | `FORBIDDEN` | Grupo **desativado** pelo professor | Falar com o professor |
+| `403` | `FORBIDDEN` | Token do cliente é de **outro** grupo | Logar de novo com a chave certa |
+
+:::danger Segurança
+A `X-API-Key` **não** é segredo do usuário — é segredo do **grupo**. Nunca exponha a chave
+no bundle de um app público sem um backend intermediário; para trabalhos da turma, mantenha
+em variável de ambiente e evite versioná-la.
+:::
+
+## Formato de erro
+
+Todos os erros seguem o mesmo envelope:
+
+```json
+{ "error": { "code": "UNAUTHORIZED", "message": "API key inválida." } }
+```

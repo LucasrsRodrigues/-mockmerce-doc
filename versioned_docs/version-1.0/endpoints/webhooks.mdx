@@ -1,0 +1,70 @@
+---
+id: webhooks
+title: Endpoints — Webhooks
+sidebar_label: Webhooks
+description: Registrar, testar, remover e inspecionar entregas de webhooks.
+---
+
+import Endpoint from '@site/src/components/Endpoint';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Webhooks
+
+Autenticação: `X-API-Key` (ou token de aluno). Conceito e validação de assinatura no
+[guia de Webhooks](../guias/webhooks).
+
+## Registrar
+
+<Endpoint method="POST" path="/v1/webhooks" auth="X-API-Key" />
+
+<Tabs groupId="lang">
+  <TabItem value="curl" label="curl" default>
+
+```bash
+curl -X POST "$BASE/webhooks" \
+  -H "X-API-Key: $API_KEY" -H "Content-Type: application/json" \
+  -d '{"url":"https://seu-app.exemplo.com/webhooks","events":["order.paid"]}'
+```
+
+  </TabItem>
+  <TabItem value="resp" label="201">
+
+```json
+{ "id": "wh_...", "url": "https://seu-app.exemplo.com/webhooks",
+  "events": ["order.paid"], "signingSecret": "whsec_...guarde-agora" }
+```
+
+  </TabItem>
+</Tabs>
+
+:::danger `signingSecret`
+Mostrado **uma vez**. É com ele que você valida o header `X-Signature`.
+:::
+
+## Listar, remover e eventos
+
+<Endpoint method="GET" path="/v1/webhooks" auth="X-API-Key" />
+<Endpoint method="DELETE" path="/v1/webhooks/:id" auth="X-API-Key" />
+<Endpoint method="GET" path="/v1/webhooks/events" auth="X-API-Key" />
+
+## Testar e auditar entregas
+
+<Endpoint method="POST" path="/v1/webhooks/:id/ping" auth="X-API-Key" />
+<Endpoint method="GET" path="/v1/webhooks/deliveries" auth="X-API-Key" />
+
+:::tip Fluxo de teste sem app público
+1. `POST /webhooks` com uma URL de teste (ex.: [webhook.site](https://webhook.site)).
+2. `POST /webhooks/:id/ping` para disparar um evento.
+3. `GET /webhooks/deliveries` para ver status HTTP e corpo de cada tentativa.
+:::
+
+## Payload recebido
+
+```json
+{ "id": "evt_...", "type": "order.paid", "createdAt": "2026-08-05T12:00:00Z",
+  "data": { "orderId": "cmse...", "total": 359.7 } }
+```
+
+Headers: `X-Webhook-Event`, `X-Timestamp`, `X-Signature: sha256=<hmac>`. Lembre da
+**idempotência** (entrega _at-least-once_): use o `id` para não processar duas vezes.

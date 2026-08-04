@@ -1,0 +1,111 @@
+---
+id: catalogo
+title: Endpoints — Catálogo
+sidebar_label: Catálogo
+description: Produtos, variantes, categorias, marcas e imagens.
+---
+
+import Endpoint from '@site/src/components/Endpoint';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Catálogo
+
+Autenticação: `X-API-Key` (ou token de aluno no painel).
+
+## Listar produtos
+
+<Endpoint method="GET" path="/v1/products" auth="X-API-Key" />
+
+Aceita `search`, `categoryId`, `brandId`, `state`, `minPrice`, `maxPrice`, `page`, `pageSize`.
+
+<Tabs groupId="lang">
+  <TabItem value="curl" label="curl" default>
+
+```bash
+curl "$BASE/products?search=fone&page=1&pageSize=20" \
+  -H "X-API-Key: $API_KEY" -H "X-Student-RM: RM550001"
+```
+
+  </TabItem>
+  <TabItem value="resp" label="200">
+
+```json
+{ "data": [{ "id": "cmse...", "name": "Fone Bluetooth", "priceFrom": 199.9, "variantsCount": 1 }],
+  "page": 1, "pageSize": 20, "total": 9 }
+```
+
+  </TabItem>
+</Tabs>
+
+## Detalhar produto (traz variantes)
+
+<Endpoint method="GET" path="/v1/products/:id" auth="X-API-Key" />
+
+:::tip A unidade vendável está aqui
+Use `variants[].id` para carrinho e `variants[].price` para exibir o preço.
+:::
+
+## Criar produto
+
+<Endpoint method="POST" path="/v1/products" auth="X-API-Key" />
+
+<Tabs groupId="tipo">
+  <TabItem value="simple" label="SIMPLE" default>
+
+```json
+{ "type": "SIMPLE", "name": "Carregador Turbo", "sku": "CARR-001", "price": 79.9, "stock": 60 }
+```
+
+  </TabItem>
+  <TabItem value="variable" label="VARIABLE">
+
+```json
+{
+  "type": "VARIABLE",
+  "name": "Camiseta Gamer",
+  "options": [{ "name": "Cor", "values": ["Preto", "Branco"] }],
+  "variants": [
+    { "sku": "CAM-PT", "price": 79.9, "stock": 10, "options": { "Cor": "Preto" } },
+    { "sku": "CAM-BR", "price": 79.9, "stock": 5,  "options": { "Cor": "Branco" } }
+  ]
+}
+```
+
+  </TabItem>
+</Tabs>
+
+## Atualizar produto e variante
+
+<Endpoint method="PUT" path="/v1/products/:id" auth="X-API-Key" />
+<Endpoint method="PATCH" path="/v1/variants/:id" auth="X-API-Key" />
+
+```json title="PUT /v1/products/:id (dados base)"
+{ "name": "Novo nome", "state": "PUBLISHED", "categoryId": null }
+```
+
+```json title="PATCH /v1/variants/:id (preço)"
+{ "price": 149.9 }
+```
+
+:::warning Estoque não é editado aqui
+Preço vai no `PATCH /variants/:id`; **estoque** usa os endpoints de estoque
+(`/v1/variants/:id/stock/receive` e `/adjust`).
+:::
+
+## Remover produto
+
+<Endpoint method="DELETE" path="/v1/products/:id" auth="X-API-Key" />
+
+Retorna `204 No Content`.
+
+## Categorias, marcas e coleções
+
+<Endpoint method="GET" path="/v1/categories" auth="X-API-Key" />
+<Endpoint method="POST" path="/v1/categories" auth="X-API-Key" />
+
+```json title="POST /v1/categories"
+{ "name": "Periféricos" }
+```
+
+O mesmo padrão vale para `/v1/brands` e `/v1/collections`.

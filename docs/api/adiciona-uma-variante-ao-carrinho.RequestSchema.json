@@ -1,0 +1,1 @@
+{"title":"Body","body":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["variantId","quantity"],"properties":{"variantId":{"type":"string"},"quantity":{"type":"integer","minimum":1}}}}}}}

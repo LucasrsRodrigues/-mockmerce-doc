@@ -1,0 +1,1 @@
+{"title":"Body","body":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"price":{"type":"number","minimum":0},"minStock":{"type":"integer","minimum":0},"barcode":{"type":"string"},"active":{"type":"boolean"},"weightGr":{"type":"integer"},"heightMm":{"type":"integer"},"widthMm":{"type":"integer"},"depthMm":{"type":"integer"}}}}}}}

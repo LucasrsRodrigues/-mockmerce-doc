@@ -1,0 +1,111 @@
+---
+id: primeiros-passos
+title: Primeiros passos
+sidebar_label: Primeiros passos
+description: Gere sua chave, faça a primeira chamada e liste produtos em 5 minutos.
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Primeiros passos
+
+Objetivo: **listar produtos** com a chave do seu grupo em menos de 5 minutos.
+
+## 1. Gere a chave de API
+
+No **painel do aluno** → **Configurações** → **Chaves de API** → dê um nome (ex.: `App Android`)
+e clique em **Criar chave**. Copie a chave (`sk_live_...`) — ela aparece **uma única vez**.
+
+:::danger A chave aparece só uma vez
+Se perder, não dá para ver de novo — é só gerar outra (e atualizar seu app). Guarde já em
+lugar seguro.
+:::
+
+## 2. Descubra a URL base
+
+<Tabs groupId="ambiente">
+  <TabItem value="local" label="Local" default>
+
+```bash
+BASE="http://localhost:3333/v1"
+```
+
+  </TabItem>
+  <TabItem value="nuvem" label="Nuvem">
+
+```bash
+# A URL que o professor passou, ex.:
+BASE="https://ecommerce-turma.onrender.com/v1"
+```
+
+  </TabItem>
+</Tabs>
+
+:::note Prefixo `/v1`
+A base canônica é **`/v1`**. Chamadas sem o prefixo (`/products`) também funcionam por um
+_alias_ transparente, mas prefira `/v1` no código do app.
+:::
+
+## 3. Primeira chamada — listar produtos
+
+<Tabs groupId="lang">
+  <TabItem value="curl" label="curl" default>
+
+```bash title="Terminal"
+curl "$BASE/products" \
+  -H "X-API-Key: sk_live_xxxxxxxxxxxx" \
+  -H "X-Student-RM: RM550001"
+```
+
+  </TabItem>
+  <TabItem value="js" label="JavaScript">
+
+```js title="listarProdutos.js"
+const BASE = 'http://localhost:3333/v1';
+const headers = {
+  'X-API-Key': 'sk_live_xxxxxxxxxxxx',
+  'X-Student-RM': 'RM550001',
+};
+
+const res = await fetch(`${BASE}/products`, { headers });
+const { data, total } = await res.json();
+console.log(`Recebi ${data.length} de ${total} produtos`);
+```
+
+  </TabItem>
+  <TabItem value="resp" label="Resposta 200">
+
+```json
+{
+  "data": [
+    {
+      "id": "cmse...",
+      "name": "Fone Bluetooth",
+      "type": "SIMPLE",
+      "state": "PUBLISHED",
+      "priceFrom": 199.9,
+      "priceTo": 199.9,
+      "stock": 50,
+      "variantsCount": 1
+    }
+  ],
+  "page": 1,
+  "pageSize": 20,
+  "total": 9
+}
+```
+
+  </TabItem>
+</Tabs>
+
+:::tip Deu 401?
+Confira se a chave está **ativa** (não foi revogada) e se o header é exatamente
+`X-API-Key`. Veja [Autenticação](../guias/autenticacao) para os erros comuns.
+:::
+
+## 4. Próximo passo
+
+Você já fala com a API. Agora implemente o fluxo de compra ponta a ponta:
+
+➡️ [Guia: Fluxo de compra](../guias/fluxo-de-compra)

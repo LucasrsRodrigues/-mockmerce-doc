@@ -1,0 +1,1 @@
+{"title":"Body","body":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["method"],"properties":{"method":{"type":"string","enum":["CREDIT_CARD","PIX","BOLETO"]},"simulate":{"type":"string","enum":["approve","decline"],"default":"approve"}}}}}}}

@@ -1,0 +1,85 @@
+---
+id: carrinho-e-pedidos
+title: Endpoints — Carrinho e Pedidos
+sidebar_label: Carrinho e Pedidos
+description: Carrinho do cliente, checkout, pagamento e acompanhamento de pedidos.
+---
+
+import Endpoint from '@site/src/components/Endpoint';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Carrinho e Pedidos
+
+Autenticação: `X-API-Key` **+** `Authorization: Bearer <token do cliente>` (ações do comprador).
+
+## Carrinho
+
+<Endpoint method="GET" path="/v1/cart" auth="X-API-Key + Bearer" />
+<Endpoint method="POST" path="/v1/cart/items" auth="X-API-Key + Bearer" />
+<Endpoint method="PATCH" path="/v1/cart/items/:id" auth="X-API-Key + Bearer" />
+<Endpoint method="DELETE" path="/v1/cart/items/:id" auth="X-API-Key + Bearer" />
+
+```json title="POST /v1/cart/items (por VARIANTE)"
+{ "variantId": "cmse...", "quantity": 2 }
+```
+
+:::tip Sempre por variante
+`variantId`, nunca `productId`. Pegue o id em `GET /products/:id → variants[]`.
+:::
+
+## Checkout
+
+<Endpoint method="POST" path="/v1/orders/checkout" auth="X-API-Key + Bearer" />
+
+Cria o pedido `PENDING` a partir do carrinho ativo e **reserva o estoque**.
+
+<Tabs groupId="lang">
+  <TabItem value="curl" label="curl" default>
+
+```bash
+curl -X POST "$BASE/orders/checkout" \
+  -H "X-API-Key: $API_KEY" -H "Authorization: Bearer $TOKEN"
+```
+
+  </TabItem>
+  <TabItem value="resp" label="201">
+
+```json
+{ "id": "cmse...", "status": "PENDING", "total": 359.7 }
+```
+
+  </TabItem>
+</Tabs>
+
+## Pagar
+
+<Endpoint method="POST" path="/v1/orders/:id/pay" auth="X-API-Key + Bearer" />
+
+```jsonc
+{ "method": "PIX" }                                  // aprova (padrão)
+{ "method": "CREDIT_CARD", "simulate": "decline" }   // força recusa (não baixa estoque)
+```
+
+:::warning Estados
+`PENDING → PAID` (aprovado, baixa estoque) · `PENDING → CANCELLED` (libera reserva). Recusa
+mantém `PENDING`.
+:::
+
+## Acompanhar pedidos
+
+<Endpoint method="GET" path="/v1/orders" auth="X-API-Key + Bearer" />
+<Endpoint method="GET" path="/v1/orders/:id" auth="X-API-Key + Bearer" />
+<Endpoint method="POST" path="/v1/orders/:id/cancel" auth="X-API-Key + Bearer" />
+
+## Gestão de pedidos (painel do grupo)
+
+O **painel do aluno** usa rotas próprias (token de aluno) para operar os pedidos da loja:
+
+<Endpoint method="GET" path="/v1/store/orders" auth="token de aluno" />
+<Endpoint method="POST" path="/v1/store/orders/:id/transition" auth="token de aluno" />
+<Endpoint method="POST" path="/v1/store/orders/:id/refund" auth="token de aluno" />
+
+```json title="POST /v1/store/orders/:id/transition"
+{ "to": "SHIPPED" }
+```

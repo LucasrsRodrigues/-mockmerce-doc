@@ -1,0 +1,1 @@
+{"title":"Body","body":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["cepDestino"],"properties":{"cepDestino":{"type":"string"},"orderId":{"type":"string","description":"Usa o peso das variantes do pedido."},"items":{"type":"array","items":{"type":"object","properties":{"weightGr":{"type":"integer"},"quantity":{"type":"integer"}}}}}}}}}}

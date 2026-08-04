@@ -1,0 +1,1 @@
+{"title":"Body","body":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["kind","relatedIds"],"properties":{"kind":{"type":"string","enum":["RELATED","CROSS_SELL","UPSELL"]},"relatedIds":{"type":"array","items":{"type":"string"}}}}}}}}

@@ -1,0 +1,971 @@
+{
+  "tutorialSidebar": [
+    "intro",
+    {
+      "type": "category",
+      "label": "Comece aqui",
+      "collapsed": false,
+      "items": [
+        "comece-aqui/o-que-e",
+        "comece-aqui/conceitos",
+        "comece-aqui/primeiros-passos"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Guias",
+      "items": [
+        "guias/autenticacao",
+        "guias/fluxo-de-compra",
+        "guias/produtos-e-variantes",
+        "guias/webhooks",
+        "guias/deploy"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Arquitetura & Diagramas",
+      "items": [
+        "arquitetura/visao-geral",
+        "arquitetura/modelo-de-dados",
+        "arquitetura/checkout-sequencia",
+        "arquitetura/calculos"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Estudos de caso",
+      "items": [
+        "estudos-de-caso/loja-de-games",
+        "estudos-de-caso/integracao-mobile"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Referência de Endpoints (guia)",
+      "items": [
+        "endpoints/visao-geral",
+        "endpoints/catalogo",
+        "endpoints/carrinho-e-pedidos",
+        "endpoints/loja-aluno",
+        "endpoints/webhooks"
+      ]
+    }
+  ],
+  "openApiSidebar": [
+    {
+      "type": "doc",
+      "id": "api/e-commerce-api-projeto-da-turma"
+    },
+    {
+      "type": "category",
+      "label": "Catálogo",
+      "link": {
+        "type": "doc",
+        "id": "api/catalogo"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/lista-categorias",
+          "label": "Lista categorias",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/cria-categoria",
+          "label": "Cria categoria",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-marcas",
+          "label": "Lista marcas",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/cria-marca",
+          "label": "Cria marca",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-colecoes",
+          "label": "Lista coleções",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/cria-colecao",
+          "label": "Cria coleção",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-tags",
+          "label": "Lista tags",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-produtos-filtros-paginacao",
+          "label": "Lista produtos (filtros + paginação)",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/cria-produto-simple-ou-variable",
+          "label": "Cria produto (SIMPLE ou VARIABLE)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/detalha-um-produto",
+          "label": "Detalha um produto",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/atualiza-um-produto",
+          "label": "Atualiza um produto",
+          "className": "api-method put"
+        },
+        {
+          "type": "doc",
+          "id": "api/remove-um-produto",
+          "label": "Remove um produto",
+          "className": "api-method delete"
+        },
+        {
+          "type": "doc",
+          "id": "api/define-produtos-relacionados-cross-sell-upsell",
+          "label": "Define produtos relacionados/cross-sell/upsell",
+          "className": "api-method put"
+        },
+        {
+          "type": "doc",
+          "id": "api/adiciona-uma-variante-a-um-produto-variavel",
+          "label": "Adiciona uma variante a um produto variável",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/atualiza-uma-variante",
+          "label": "Atualiza uma variante",
+          "className": "api-method patch"
+        },
+        {
+          "type": "doc",
+          "id": "api/remove-uma-variante-nao-a-ultima",
+          "label": "Remove uma variante (não a última)",
+          "className": "api-method delete"
+        },
+        {
+          "type": "doc",
+          "id": "api/adiciona-imagem-produto-ou-variante",
+          "label": "Adiciona imagem (produto ou variante)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/remove-imagem",
+          "label": "Remove imagem",
+          "className": "api-method delete"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Auth Cliente",
+      "link": {
+        "type": "doc",
+        "id": "api/auth-cliente"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/cadastra-um-cliente-final-e-ja-retorna-o-token",
+          "label": "Cadastra um cliente final e já retorna o token",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/login-do-cliente-final",
+          "label": "Login do cliente final",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/dados-do-cliente-logado",
+          "label": "Dados do cliente logado",
+          "className": "api-method get"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Cliente",
+      "link": {
+        "type": "doc",
+        "id": "api/cliente"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/lista-os-enderecos",
+          "label": "Lista os endereços",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/adiciona-um-endereco",
+          "label": "Adiciona um endereço",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/remove-um-endereco",
+          "label": "Remove um endereço",
+          "className": "api-method delete"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-os-favoritos",
+          "label": "Lista os favoritos",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/adiciona-aos-favoritos",
+          "label": "Adiciona aos favoritos",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/remove-dos-favoritos",
+          "label": "Remove dos favoritos",
+          "className": "api-method delete"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Carrinho",
+      "link": {
+        "type": "doc",
+        "id": "api/carrinho"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/retorna-o-carrinho-ativo",
+          "label": "Retorna o carrinho ativo",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/esvazia-o-carrinho",
+          "label": "Esvazia o carrinho",
+          "className": "api-method delete"
+        },
+        {
+          "type": "doc",
+          "id": "api/adiciona-uma-variante-ao-carrinho",
+          "label": "Adiciona uma variante ao carrinho",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/altera-a-quantidade-de-um-item",
+          "label": "Altera a quantidade de um item",
+          "className": "api-method patch"
+        },
+        {
+          "type": "doc",
+          "id": "api/remove-um-item",
+          "label": "Remove um item",
+          "className": "api-method delete"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Pedidos",
+      "link": {
+        "type": "doc",
+        "id": "api/pedidos"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/cria-um-pedido-a-partir-do-carrinho-ativo-e-reserva-o-estoque-pending",
+          "label": "Cria um pedido a partir do carrinho ativo e RESERVA o estoque (PENDING)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-pedidos-do-cliente-logado",
+          "label": "Lista pedidos do cliente logado",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/detalha-um-pedido",
+          "label": "Detalha um pedido",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/cancela-um-pedido-pendente-e-libera-a-reserva",
+          "label": "Cancela um pedido pendente e LIBERA a reserva",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/linha-do-tempo-do-pedido",
+          "label": "Linha do tempo do pedido",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/recria-o-carrinho-a-partir-de-um-pedido-comprar-novamente",
+          "label": "Recria o carrinho a partir de um pedido (comprar novamente)",
+          "className": "api-method post"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Pedidos (loja)",
+      "link": {
+        "type": "doc",
+        "id": "api/pedidos-loja"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/lista-todos-os-pedidos-do-grupo",
+          "label": "Lista todos os pedidos do grupo",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/cria-um-pedido-manual-para-um-cliente-reserva-estoque",
+          "label": "Cria um pedido manual para um cliente (reserva estoque)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/detalha-um-pedido-com-timeline-e-comentarios-internos",
+          "label": "Detalha um pedido (com timeline e comentários internos)",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/avanca-o-status-fulfilled-shipped-delivered",
+          "label": "Avança o status (FULFILLED/SHIPPED/DELIVERED)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/reembolsa-um-pedido-pago-reverte-o-estoque-estorna",
+          "label": "Reembolsa um pedido pago: reverte o estoque + estorna",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-comentarios-internos-so-a-loja-ve",
+          "label": "Lista comentários internos (só a loja vê)",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/adiciona-um-comentario-interno",
+          "label": "Adiciona um comentário interno",
+          "className": "api-method post"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Clientes (loja)",
+      "link": {
+        "type": "doc",
+        "id": "api/clientes-loja"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/marca-carrinhos-abandonados-do-grupo-evento-e-mail",
+          "label": "Marca carrinhos abandonados do grupo (evento + e-mail)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-os-clientes-do-grupo",
+          "label": "Lista os clientes do grupo",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-segmentos",
+          "label": "Lista segmentos",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/cria-um-segmento",
+          "label": "Cria um segmento",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-membros-do-segmento",
+          "label": "Lista membros do segmento",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/adiciona-um-cliente-ao-segmento",
+          "label": "Adiciona um cliente ao segmento",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/remove-um-cliente-do-segmento",
+          "label": "Remove um cliente do segmento",
+          "className": "api-method delete"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Comunicações",
+      "link": {
+        "type": "doc",
+        "id": "api/comunicacoes"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/fake-nf-e-do-pedido-gera-na-1-chamada-se-pago",
+          "label": "[FAKE] NF-e do pedido (gera na 1ª chamada, se pago)",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/fake-e-mails-que-seriam-enviados",
+          "label": "[FAKE] E-mails que 'seriam' enviados",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/fake-sincroniza-um-payload-com-o-erp-mock",
+          "label": "[FAKE] Sincroniza um payload com o ERP mock",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/fake-sincroniza-um-payload-com-o-crm-mock",
+          "label": "[FAKE] Sincroniza um payload com o CRM mock",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/fake-sincroniza-um-payload-com-o-marketplace-mock",
+          "label": "[FAKE] Sincroniza um payload com o MARKETPLACE mock",
+          "className": "api-method post"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Pagamento",
+      "link": {
+        "type": "doc",
+        "id": "api/pagamento"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/paga-um-pedido-simulado-se-aprovado-confirma-a-baixa-da-reserva",
+          "label": "Paga um pedido (simulado). Se aprovado, confirma a baixa da reserva.",
+          "className": "api-method post"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Estoque",
+      "link": {
+        "type": "doc",
+        "id": "api/estoque"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/lista-depositos",
+          "label": "Lista depósitos",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/cria-um-deposito",
+          "label": "Cria um depósito",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/saldo-por-deposito-on-hand-reserved-disponivel",
+          "label": "Saldo por depósito (onHand/reserved/disponível)",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/entrada-de-estoque",
+          "label": "Entrada de estoque",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/ajuste-de-estoque-define-o-on-hand-do-deposito",
+          "label": "Ajuste de estoque (define o onHand do depósito)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/historico-de-movimentacao",
+          "label": "Histórico de movimentação",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/inventario-submete-contagem-e-gera-ajustes",
+          "label": "Inventário: submete contagem e gera ajustes",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/forca-a-expiracao-de-reservas-vencidas-do-grupo-util-para-testes",
+          "label": "Força a expiração de reservas vencidas do grupo (útil para testes)",
+          "className": "api-method post"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Webhooks",
+      "link": {
+        "type": "doc",
+        "id": "api/webhooks"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/lista-os-tipos-de-evento-disponiveis",
+          "label": "Lista os tipos de evento disponíveis",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-os-webhooks-do-grupo",
+          "label": "Lista os webhooks do grupo",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/registra-um-webhook-o-signing-secret-e-mostrado-uma-vez",
+          "label": "Registra um webhook (o signingSecret é mostrado UMA vez)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/detalha-um-webhook",
+          "label": "Detalha um webhook",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/atualiza-um-webhook",
+          "label": "Atualiza um webhook",
+          "className": "api-method patch"
+        },
+        {
+          "type": "doc",
+          "id": "api/remove-um-webhook",
+          "label": "Remove um webhook",
+          "className": "api-method delete"
+        },
+        {
+          "type": "doc",
+          "id": "api/gera-um-novo-signing-secret-invalida-o-anterior",
+          "label": "Gera um novo signingSecret (invalida o anterior)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/envia-um-evento-de-teste-webhook-ping-ao-endpoint",
+          "label": "Envia um evento de teste (webhook.ping) ao endpoint",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/historico-de-entregas-inspector",
+          "label": "Histórico de entregas (inspector)",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/reenvia-uma-entrega-manualmente",
+          "label": "Reenvia uma entrega manualmente",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/forca-uma-passada-do-relay-para-o-grupo-util-em-testes",
+          "label": "Força uma passada do relay para o grupo (útil em testes)",
+          "className": "api-method post"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Sandbox",
+      "link": {
+        "type": "doc",
+        "id": "api/sandbox"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/fake-cria-uma-cobranca-pix-cartao-boleto",
+          "label": "[FAKE] Cria uma cobrança (PIX/cartão/boleto)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/fake-consulta-o-status-de-uma-cobranca",
+          "label": "[FAKE] Consulta o status de uma cobrança",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/fake-confirma-settle-uma-cobranca-pix-boleto-→-dispara-webhook",
+          "label": "[FAKE] Confirma (settle) uma cobrança PIX/boleto → dispara webhook",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/fake-cria-uma-assinatura-recorrente",
+          "label": "[FAKE] Cria uma assinatura recorrente",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/fake-avanca-um-ciclo-da-assinatura-gera-cobranca-webhook",
+          "label": "[FAKE] Avança um ciclo da assinatura (gera cobrança + webhook)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/fake-cotacao-de-frete-por-cep-pac-sedex-transportadora-retirada",
+          "label": "[FAKE] Cotação de frete por CEP (PAC/SEDEX/Transportadora/Retirada)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/fake-despacha-um-pedido-cria-envio-rastreamento",
+          "label": "[FAKE] Despacha um pedido (cria envio + rastreamento)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/fake-detalha-um-envio-rastreamento",
+          "label": "[FAKE] Detalha um envio + rastreamento",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/fake-avanca-o-rastreamento-postado→transito→entregue-webhook",
+          "label": "[FAKE] Avança o rastreamento (postado→trânsito→entregue) + webhook",
+          "className": "api-method post"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Relatórios",
+      "link": {
+        "type": "doc",
+        "id": "api/relatorios"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/resumo-de-vendas-serie-diaria-receita-de-pedidos-pagos",
+          "label": "Resumo de vendas + série diária (receita de pedidos pagos)",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/produtos-variantes-mais-vendidos",
+          "label": "Produtos/variantes mais vendidos",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/clientes-recorrentes-vs-novos",
+          "label": "Clientes: recorrentes vs novos",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/estoque-abaixo-do-minimo-sem-estoque",
+          "label": "Estoque: abaixo do mínimo / sem estoque",
+          "className": "api-method get"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Configurações",
+      "link": {
+        "type": "doc",
+        "id": "api/configuracoes"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/lista-as-chaves-de-api-do-grupo-so-o-prefixo-e-visivel",
+          "label": "Lista as chaves de API do grupo (só o prefixo é visível)",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/cria-uma-nova-api-key-nomeada-a-chave-em-texto-aparece-so-uma-vez",
+          "label": "Cria uma nova API key nomeada. A chave em texto aparece só uma vez.",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/revoga-uma-api-key-deixa-de-autenticar-imediatamente",
+          "label": "Revoga uma API key (deixa de autenticar imediatamente)",
+          "className": "api-method delete"
+        },
+        {
+          "type": "doc",
+          "id": "api/configuracao-da-loja-regional-identidade-contato-tema-fiscal",
+          "label": "Configuração da loja (regional + identidade/contato/tema/fiscal)",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/atualiza-a-configuracao-da-loja",
+          "label": "Atualiza a configuração da loja",
+          "className": "api-method put"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-os-alunos-rm-do-grupo",
+          "label": "Lista os alunos (RM) do grupo",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/adiciona-um-aluno-rm-ao-grupo",
+          "label": "Adiciona um aluno (RM) ao grupo",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/remove-um-aluno-do-grupo-nao-pode-remover-a-si-mesmo",
+          "label": "Remove um aluno do grupo (não pode remover a si mesmo)",
+          "className": "api-method delete"
+        },
+        {
+          "type": "doc",
+          "id": "api/lgpd-exporta-todos-os-dados-de-um-cliente",
+          "label": "[LGPD] Exporta todos os dados de um cliente",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/lgpd-anonimiza-um-cliente-mantem-pedidos-p-integridade",
+          "label": "[LGPD] Anonimiza um cliente (mantém pedidos p/ integridade)",
+          "className": "api-method delete"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Ensino",
+      "link": {
+        "type": "doc",
+        "id": "api/ensino"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/painel-do-grupo-missoes-xp-badges-nota-e-o-que-falta",
+          "label": "Painel do grupo: missões, XP, badges, nota e o que falta",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/ranking-de-grupos-por-xp-respeita-opt-out",
+          "label": "Ranking de grupos por XP (respeita opt-out)",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/enviar-para-correcao-snapshot-imutavel-nota",
+          "label": "Enviar para correção (snapshot imutável + nota)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/config-de-ensino-do-grupo-ex-opt-out-do-ranking-publico",
+          "label": "Config de ensino do grupo (ex.: opt-out do ranking público)",
+          "className": "api-method put"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Admin",
+      "link": {
+        "type": "doc",
+        "id": "api/admin"
+      },
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/cria-um-grupo-e-gera-a-api-key-mostrada-uma-vez",
+          "label": "Cria um grupo e gera a API key (mostrada UMA vez)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-grupos-com-contagens-alunos-produtos-pedidos-requisicoes",
+          "label": "Lista grupos com contagens (alunos, produtos, pedidos, requisições)",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/gera-uma-nova-api-key-para-o-grupo-invalida-a-anterior",
+          "label": "Gera uma nova API key para o grupo (invalida a anterior)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/ativa-ou-desativa-um-grupo",
+          "label": "Ativa ou desativa um grupo",
+          "className": "api-method patch"
+        },
+        {
+          "type": "doc",
+          "id": "api/adiciona-alunos-rm-a-um-grupo",
+          "label": "Adiciona alunos (RM) a um grupo",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/consulta-o-log-bruto-de-requisicoes-com-filtros",
+          "label": "Consulta o log bruto de requisições (com filtros)",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/resumo-de-participacao-requisicoes-por-grupo-e-por-rm",
+          "label": "Resumo de participação: requisições por grupo e por RM",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/login-de-operador-retorna-token-de-12-h",
+          "label": "Login de operador (retorna token de 12h)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/cria-um-operador-so-admin",
+          "label": "Cria um operador (só ADMIN)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-operadores-so-admin",
+          "label": "Lista operadores (só ADMIN)",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/log-de-auditoria-de-acoes-sensiveis",
+          "label": "Log de auditoria de ações sensíveis",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/avalia-as-missoes-um-grupo-ou-todos",
+          "label": "Avalia as missões (um grupo ou todos)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/visao-da-turma-xp-nota-por-grupo-e-por-aluno",
+          "label": "Visão da turma: XP/nota por grupo e por aluno",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/ranking-completo-professor-ve-todos",
+          "label": "Ranking completo (professor vê todos)",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/painel-de-um-grupo-especifico",
+          "label": "Painel de um grupo específico",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/lista-as-missoes",
+          "label": "Lista as missões",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/cria-ou-atualiza-uma-missao",
+          "label": "Cria ou atualiza uma missão",
+          "className": "api-method post"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Loja (aluno)",
+      "items": [
+        {
+          "type": "doc",
+          "id": "api/login-do-aluno-login-rm-senha-inicial-rm",
+          "label": "Login do aluno (login = RM; senha inicial = RM)",
+          "className": "api-method post"
+        },
+        {
+          "type": "doc",
+          "id": "api/dados-do-aluno-logado",
+          "label": "Dados do aluno logado",
+          "className": "api-method get"
+        },
+        {
+          "type": "doc",
+          "id": "api/troca-a-senha-obrigatoria-no-1-acesso",
+          "label": "Troca a senha (obrigatória no 1º acesso)",
+          "className": "api-method post"
+        }
+      ]
+    }
+  ]
+}

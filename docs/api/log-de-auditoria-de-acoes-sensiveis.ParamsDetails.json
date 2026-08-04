@@ -1,0 +1,1 @@
+{"parameters":[{"schema":{"type":"string"},"in":"query","name":"action","required":false},{"schema":{"type":"integer","minimum":1,"default":1},"in":"query","name":"page","required":false},{"schema":{"type":"integer","minimum":1,"maximum":200,"default":50},"in":"query","name":"pageSize","required":false}]}

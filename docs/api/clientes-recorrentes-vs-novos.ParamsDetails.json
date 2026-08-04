@@ -1,0 +1,1 @@
+{"parameters":[{"schema":{"type":"string"},"in":"query","name":"from","required":false},{"schema":{"type":"string"},"in":"query","name":"to","required":false},{"schema":{"type":"string","enum":["json","csv"],"default":"json"},"in":"query","name":"format","required":false}]}

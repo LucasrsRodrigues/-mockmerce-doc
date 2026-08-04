@@ -1,0 +1,46 @@
+---
+id: visao-geral
+title: Referência de Endpoints
+sidebar_label: Visão geral
+description: Convenções, base URL, headers e o índice por área da API.
+---
+
+import Endpoint from '@site/src/components/Endpoint';
+
+# Referência de Endpoints
+
+Esta seção é um **guia curado** dos endpoints mais usados, com exemplos prontos. Para a
+lista **exaustiva e executável**, use o [Swagger](http://localhost:3333/docs).
+
+## Convenções
+
+- **Base URL:** `http://localhost:3333/v1` (ou a URL da nuvem + `/v1`).
+- **Headers de negócio:** `X-API-Key` (obrigatório) e `X-Student-RM` (recomendado).
+- **Ações do cliente logado:** somam `Authorization: Bearer <token>`.
+- **Paginação:** rotas de lista aceitam `page` e `pageSize` (máx. `100`) e devolvem
+  `{ data, page, pageSize, total }`.
+- **Erros:** sempre `{ "error": { "code", "message" } }`.
+
+<Endpoint method="GET" path="/health" />
+
+Healthcheck simples (sem `/v1`, sem auth): retorna `{ "status": "ok" }`.
+
+## Índice por área
+
+| Área | Conteúdo | Página |
+|---|---|---|
+| **Catálogo** | Produtos, variantes, categorias, imagens | [Catálogo](catalogo) |
+| **Carrinho & Pedidos** | Carrinho, checkout, pagamento | [Carrinho e Pedidos](carrinho-e-pedidos) |
+| **Loja (aluno)** | Login do aluno, config, chaves, membros | [Loja/Aluno](loja-aluno) |
+| **Webhooks** | Registrar, testar e listar entregas | [Webhooks](webhooks) |
+
+:::info Badges de método
+Ao longo destas páginas, o método HTTP aparece assim:
+<span style={{display:'inline-flex',gap:'0.4rem',verticalAlign:'middle'}}>
+<span className="api-method api-method--get">GET</span>
+<span className="api-method api-method--post">POST</span>
+<span className="api-method api-method--put">PUT</span>
+<span className="api-method api-method--patch">PATCH</span>
+<span className="api-method api-method--delete">DELETE</span>
+</span>
+:::

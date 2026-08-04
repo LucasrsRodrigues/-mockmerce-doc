@@ -1,0 +1,1 @@
+{"responses":{"201":{"description":"Default Response","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string"},"name":{"type":"string"},"prefix":{"type":"string"},"apiKey":{"type":"string"}}}}}}}}

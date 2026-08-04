@@ -1,0 +1,1 @@
+{"title":"Body","body":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["counts"],"properties":{"counts":{"type":"array","items":{"type":"object","required":["variantId","warehouseId","counted"],"properties":{"variantId":{"type":"string"},"warehouseId":{"type":"string"},"counted":{"type":"integer","minimum":0}}}}}}}}}}

@@ -1,0 +1,97 @@
+---
+id: loja-aluno
+title: Endpoints — Loja / Aluno
+sidebar_label: Loja / Aluno
+description: Login do aluno, configuração da loja, chaves de API e membros do grupo.
+---
+
+import Endpoint from '@site/src/components/Endpoint';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Loja / Aluno (painel)
+
+Rotas usadas pelo **painel do aluno**. Autenticação: token de aluno
+(`Authorization: Bearer`), obtido no login. Ele vale no lugar da `X-API-Key`.
+
+## Login do aluno
+
+<Endpoint method="POST" path="/v1/store/auth/login" />
+
+Login = **RM**; senha inicial = o próprio **RM** (com troca forçada no 1º acesso).
+
+<Tabs groupId="lang">
+  <TabItem value="curl" label="curl" default>
+
+```bash
+curl -X POST "$BASE/store/auth/login" -H "Content-Type: application/json" \
+  -d '{"rm":"RM550001","password":"RM550001"}'
+```
+
+  </TabItem>
+  <TabItem value="resp" label="200">
+
+```json
+{ "token": "eyJ...", "student": { "rm": "RM550001", "name": "Aluno 1", "group": "Grupo Demo" },
+  "mustChangePassword": true }
+```
+
+  </TabItem>
+</Tabs>
+
+<Endpoint method="GET" path="/v1/store/auth/me" auth="token de aluno" />
+<Endpoint method="POST" path="/v1/store/auth/change-password" auth="token de aluno" />
+
+## Configuração da loja
+
+<Endpoint method="GET" path="/v1/store/settings" auth="token de aluno" />
+<Endpoint method="PUT" path="/v1/store/settings" auth="token de aluno" />
+
+```json title="PUT /v1/store/settings"
+{
+  "storeName": "GamerStore",
+  "primaryColor": "#22c55e",
+  "supportEmail": "suporte@gamer.com",
+  "locale": "pt-BR", "currency": "BRL"
+}
+```
+
+## Chaves de API (Shopify-style)
+
+<Endpoint method="GET" path="/v1/store/api-keys" auth="token de aluno" />
+<Endpoint method="POST" path="/v1/store/api-keys" auth="token de aluno" />
+<Endpoint method="DELETE" path="/v1/store/api-keys/:id" auth="token de aluno" />
+
+```json title="POST /v1/store/api-keys → a chave aparece só uma vez"
+{ "name": "App Android" }
+```
+
+:::danger A chave só aparece na criação
+A resposta traz `apiKey: "sk_live_..."` **uma vez**. Depois, só o prefixo é visível.
+Revogar (`DELETE`) invalida a chave **imediatamente**.
+:::
+
+## Membros do grupo
+
+<Endpoint method="GET" path="/v1/store/members" auth="token de aluno" />
+<Endpoint method="POST" path="/v1/store/members" auth="token de aluno" />
+<Endpoint method="DELETE" path="/v1/store/members/:rm" auth="token de aluno" />
+
+```json title="POST /v1/store/members"
+{ "rm": "RM550004", "name": "Colega Novo" }
+```
+
+:::note Regras
+Um RM que já está em **outro** grupo é rejeitado (`409`). Não dá para **remover a si mesmo**
+nem esvaziar o grupo. É essa lista que o professor usa na avaliação.
+:::
+
+## Admin (professor)
+
+Fora do painel do aluno, o professor usa `X-Admin-Token`:
+
+<Endpoint method="POST" path="/v1/admin/groups" auth="X-Admin-Token" />
+<Endpoint method="GET" path="/v1/admin/activity" auth="X-Admin-Token" />
+
+`GET /admin/activity` resume **quantas chamadas cada grupo e cada RM fez** — a visão-chave
+de participação.
