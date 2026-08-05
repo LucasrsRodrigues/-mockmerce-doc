@@ -10,6 +10,16 @@ const config: Config = {
   tagline: 'Tudo que o seu grupo precisa para integrar o e-commerce da turma',
   favicon: 'img/favicon.svg',
 
+  // Docusaurus Faster (Rspack + SWC): build muito mais leve/rápido — evita o
+  // OOM na VPS durante a renderização estática. Depende de @docusaurus/faster.
+  future: {
+    // Exigido pelo ssgWorkerThreads que o `faster` ativa (mudança leve de post-build).
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true,
+    },
+    faster: true,
+  },
+
   url: process.env.DOCS_URL || 'https://loja-fiap.exemplo',
   baseUrl: process.env.DOCS_BASE_URL || '/',
 
