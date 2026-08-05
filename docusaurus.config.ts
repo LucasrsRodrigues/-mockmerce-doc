@@ -10,8 +10,8 @@ const config: Config = {
   tagline: 'Tudo que o seu grupo precisa para integrar o e-commerce da turma',
   favicon: 'img/favicon.svg',
 
-  url: 'https://loja-fiap.exemplo',
-  baseUrl: '/',
+  url: process.env.DOCS_URL || 'https://loja-fiap.exemplo',
+  baseUrl: process.env.DOCS_BASE_URL || '/',
 
   organizationName: 'fiap-2tdspg',
   projectName: 'docs-hub',
