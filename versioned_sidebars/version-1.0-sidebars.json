@@ -59,7 +59,7 @@
     },
     {
       "type": "category",
-      "label": "Catálogo",
+      "label": "🛍️ Catálogo",
       "link": {
         "type": "doc",
         "id": "api/catalogo"
@@ -177,7 +177,7 @@
     },
     {
       "type": "category",
-      "label": "Auth Cliente",
+      "label": "🔐 Auth Cliente",
       "link": {
         "type": "doc",
         "id": "api/auth-cliente"
@@ -205,7 +205,7 @@
     },
     {
       "type": "category",
-      "label": "Cliente",
+      "label": "👤 Cliente",
       "link": {
         "type": "doc",
         "id": "api/cliente"
@@ -251,7 +251,7 @@
     },
     {
       "type": "category",
-      "label": "Carrinho",
+      "label": "🛒 Carrinho",
       "link": {
         "type": "doc",
         "id": "api/carrinho"
@@ -291,7 +291,7 @@
     },
     {
       "type": "category",
-      "label": "Pedidos",
+      "label": "🧾 Pedidos",
       "link": {
         "type": "doc",
         "id": "api/pedidos"
@@ -337,7 +337,7 @@
     },
     {
       "type": "category",
-      "label": "Pedidos (loja)",
+      "label": "🏬 Pedidos (loja)",
       "link": {
         "type": "doc",
         "id": "api/pedidos-loja"
@@ -389,7 +389,7 @@
     },
     {
       "type": "category",
-      "label": "Clientes (loja)",
+      "label": "👥 Clientes (loja)",
       "link": {
         "type": "doc",
         "id": "api/clientes-loja"
@@ -441,7 +441,7 @@
     },
     {
       "type": "category",
-      "label": "Comunicações",
+      "label": "📣 Comunicações",
       "link": {
         "type": "doc",
         "id": "api/comunicacoes"
@@ -481,7 +481,7 @@
     },
     {
       "type": "category",
-      "label": "Pagamento",
+      "label": "💳 Pagamento",
       "link": {
         "type": "doc",
         "id": "api/pagamento"
@@ -497,7 +497,7 @@
     },
     {
       "type": "category",
-      "label": "Estoque",
+      "label": "📦 Estoque",
       "link": {
         "type": "doc",
         "id": "api/estoque"
@@ -555,7 +555,7 @@
     },
     {
       "type": "category",
-      "label": "Webhooks",
+      "label": "🔔 Webhooks",
       "link": {
         "type": "doc",
         "id": "api/webhooks"
@@ -631,7 +631,7 @@
     },
     {
       "type": "category",
-      "label": "Sandbox",
+      "label": "🧪 Sandbox",
       "link": {
         "type": "doc",
         "id": "api/sandbox"
@@ -695,7 +695,7 @@
     },
     {
       "type": "category",
-      "label": "Relatórios",
+      "label": "📊 Relatórios",
       "link": {
         "type": "doc",
         "id": "api/relatorios"
@@ -729,7 +729,7 @@
     },
     {
       "type": "category",
-      "label": "Configurações",
+      "label": "⚙️ Configurações",
       "link": {
         "type": "doc",
         "id": "api/configuracoes"
@@ -799,7 +799,7 @@
     },
     {
       "type": "category",
-      "label": "Ensino",
+      "label": "🎓 Ensino",
       "link": {
         "type": "doc",
         "id": "api/ensino"
@@ -833,7 +833,7 @@
     },
     {
       "type": "category",
-      "label": "Admin",
+      "label": "🛡️ Admin",
       "link": {
         "type": "doc",
         "id": "api/admin"
@@ -945,7 +945,7 @@
     },
     {
       "type": "category",
-      "label": "Loja (aluno)",
+      "label": "🏪 Loja (aluno)",
       "items": [
         {
           "type": "doc",

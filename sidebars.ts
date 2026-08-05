@@ -1,10 +1,23 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 // Sidebar gerado pelo plugin OpenAPI (docs/api). Exporta { apisidebar: [...] }.
 import openapiSidebar from './docs/api/sidebar';
+import { API_TAG_EMOJI } from './src/apiTagEmoji';
 
 // O default export do sidebar gerado JÁ é o array de itens (export default sidebar.apisidebar).
 const mod = openapiSidebar as any;
-const apiItems = (Array.isArray(mod) ? mod : mod.default ?? []) as any[];
+const rawApiItems = (Array.isArray(mod) ? mod : mod.default ?? []) as any[];
+
+// Prefixa cada categoria (tag) com um emoji temático — feito aqui (e não no
+// spec) para sobreviver à regeneração dos docs pelo plugin OpenAPI.
+const apiItems = rawApiItems.map((item) => {
+  if (item?.type === 'category' && typeof item.label === 'string') {
+    const emoji = API_TAG_EMOJI[item.label];
+    if (emoji && !item.label.startsWith(emoji)) {
+      return { ...item, label: `${emoji} ${item.label}` };
+    }
+  }
+  return item;
+});
 
 /**
  * Sidebar do Hub — explícito para controlar ordem e agrupamento.

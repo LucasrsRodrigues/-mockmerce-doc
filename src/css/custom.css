@@ -140,6 +140,69 @@ code { border: 1px solid hsl(var(--sh-border)); }
 .api-method--patch { background: #7c3aed; }
 .api-method--delete { background: #dc2626; }
 
+/* ---- Cards de endpoint da API (DocCard swizzle) ---- */
+/* Cards da mesma linha com altura igual. */
+.theme-doc-card-list-container .col,
+article.col { display: flex; }
+.apiCard { width: 100%; height: 100%; }
+
+.apiCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+.apiCard:hover { text-decoration: none; }
+
+.apiCard__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  min-width: 0;
+}
+.apiCard__emoji {
+  font-size: 1.3rem;
+  line-height: 1.35;
+  flex: none;
+}
+.apiCard__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 700;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: hsl(var(--sh-fg));
+  /* Quebra em até 2 linhas em vez de cortar nomes longos. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.apiCard__desc {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: hsl(var(--sh-muted-fg));
+  text-transform: none;   /* não herda o uppercase de .api-method */
+}
+
+/* Badge do método HTTP — mesma paleta dos badges inline (.api-method--*). */
+.apiCard__method {
+  flex: none;
+  font: 600 0.66rem/1.5 var(--ifm-font-family-monospace);
+  letter-spacing: 0.04em;
+  padding: 0.06rem 0.45rem;
+  border-radius: 0.4rem;
+  color: #fff;
+}
+.apiCard__method--get { background: #16a34a; }
+.apiCard__method--post { background: #2563eb; }
+.apiCard__method--put { background: #d97706; }
+.apiCard__method--patch { background: #7c3aed; }
+.apiCard__method--delete { background: #dc2626; }
+
 /* ---- Footer mais sóbrio ---- */
 .footer { border-top: 1px solid hsl(var(--sh-border)); }
 .footer--dark { --ifm-footer-color: hsl(0 0% 80%); }
